@@ -15,7 +15,7 @@
 
 1. Clonar el repositorio.
 2. Navegar hasta la carpeta del proyecto y abrir el archivo index.html.
-3. Al abrir la página, verás un botón "Comenzar Quiz". Haz clic en este botón para iniciar el quiz.
-4. Responde las preguntas seleccionando una de las opciones presentadas.
-5. Después de responder todas las preguntas, se mostrará tu puntuación total.
-6. Para jugar otra vez, haz clic en el botón "Jugar otra vez" al final del quiz.
+3. Al abrir la página, aparecerá un botón "Comenzar Quiz". Hacer clic en este botón para iniciar el quiz.
+4. Responder las preguntas seleccionando una de las opciones presentadas.
+5. Después de responder todas las preguntas, se mostrará la puntuación total.
+6. Para jugar otra vez, hacer clic en el botón "Jugar otra vez" al final del quiz.
