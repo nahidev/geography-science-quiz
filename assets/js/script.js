@@ -99,6 +99,106 @@ const questions = [
             {text: "México", correct: false},
         ]
     },
+    {
+        question: "¿Cuál es el país con mayor cantidad de lluvia del mundo?",
+        image: "assets/imgs/imagen11.jpg",
+        answers:[
+            {text: "Reino Unido", correct: false},
+            {text: "Islas Salomón", correct: false},
+            {text: "Panamá", correct: false},
+            {text: "Colombia", correct: true},
+        ]
+    },
+    {
+        question: "¿Qué países atraviesa la Cordillera de los Andes?",
+        image: "assets/imgs/imagen12.jpg",
+        answers:[
+            {text: "Argentina, Chile, Bolivia, Perú, Ecuador, Colombia y Venezuela.", correct: true},
+            {text: "Argentina, Chile, Perú, Ecuador y Colombia", correct: false},
+            {text: "Argentina, Chile, Bolivia, Perú, Ecuador, Colombia, Paraguay y Venezuela.", correct: false},
+            {text: "Argentina, Chile, Perú, Ecuador, Colombia, Paraguay y Venezuela.", correct: false},
+        ]
+    },
+    {
+        question: "¿Cuál es el lugar habitado más aislado de la tierra?",
+        image: "assets/imgs/imagen13.jpg",
+        answers:[
+            {text: "Ittoqqortoormiit", correct: false},
+            {text: "Islas Pitcairn", correct: false},
+            {text: "Tristán de Acuña", correct: true},
+            {text: "Alert", correct: false},
+        ]
+    },
+    {
+        question: "¿Cuál es la ciudad más alta del mundo?",
+        image: "assets/imgs/imagen14.jpg",
+        answers:[
+            {text: "Wenquan", correct: false},
+            {text: "Tuiwa", correct: false},
+            {text: "La Rinconada", correct: true},
+            {text: "Antonio Pampa", correct: false},
+        ]
+    },
+    {
+        question: "¿Cómo se llama el lugar mas aislado de la tierra?",
+        image: "assets/imgs/imagen15.jpg",
+        answers:[
+            {text: "Punto Atlas", correct: false},
+            {text: "Punto Nemo", correct: true},
+            {text: "Punto Horizon", correct: false},
+            {text: "Punto Zenith", correct: false},
+        ]
+    },
+    {
+        question: "¿Qué país NO tiene un sol en su bandera?",
+        image: "assets/imgs/imagen16.jpg",
+        answers:[
+            {text: "Argentina", correct: false},
+            {text: "Ruanda", correct: false},
+            {text: "Namibia", correct: false},
+            {text: "Sierra Leona", correct: true},
+        ]
+    },
+    {
+        question: "¿Dónde podemos encontrar la serpiente taipán conocida como la más venenosa del mundo?",
+        image: "assets/imgs/imagen17.jpg",
+        answers:[
+            {text: "Australia", correct: true},
+            {text: "Tailandia", correct: false},
+            {text: "India", correct: false},
+            {text: "América del Norte", correct: false},
+        ]
+    },
+    {
+        question: "¿Qué estado de Estados Unidos tiene la mayor cantidad de lagos?",
+        image: "assets/imgs/imagen18.jpg",
+        answers:[
+            {text: "Minnesota", correct: true},
+            {text: "Michigan", correct: false},
+            {text: "Wisconsin", correct: false},
+            {text: "Ohio", correct: false},
+        ]
+    },
+    {
+        question: "¿Qué país está más al sur?",
+        image: "assets/imgs/imagen19.jpg",
+        answers:[
+            {text: "Zambia", correct: false},
+            {text: "Angola", correct: false},
+            {text: "Botsuana", correct: true},
+            {text: "Gabón", correct: false},
+        ]
+    },
+    {
+        question: "¿Qué naciones conforman el Reino Unido??",
+        image: "assets/imgs/imagen20.jpg",
+        answers:[
+            {text: "Inglaterra, Escocia y Gales", correct: false},
+            {text: "Inglaterra, Irlanda del Norte, Escocia y Gales", correct: true},
+            {text: "Inglaterra, Irlanda del Norte, Irlanda, Escocia y Gales", correct: false},
+            {text: "Inglaterra, Irlanda del Norte y Escocia", correct: false},
+        ]
+    },
 ];
 
 const questionElement = document.getElementById("question");
@@ -112,6 +212,7 @@ const quizContainer = document.querySelector(".quiz");
 
 let currentQuestionIndex = 0;
 let score = 0;
+let selectedQuestions = [];
 
 startButton.addEventListener("click", () => {
     startButton.style.display = "none"; 
@@ -131,14 +232,20 @@ stopAudioButton.addEventListener("click", function() {
 function startQuiz(){
     currentQuestionIndex = 0;
     score = 0;
+    selectedQuestions = getRandomQuestions(questions, 10);
     nextButton.innerHTML = "Siguiente";
     showQuestion();
     questionImage.style.display = "block";
 }
 
+function getRandomQuestions(questions, num){
+    let randomQuestions = questions.sort(() => 0.5 - Math.random());
+    return randomQuestions.slice(0, num);
+}
+
 function showQuestion(){
     resetState();
-    let currentQuestion = questions[currentQuestionIndex];
+    let currentQuestion = selectedQuestions[currentQuestionIndex];
     let questionNo = currentQuestionIndex + 1;
     questionElement.innerHTML = questionNo + ". " + currentQuestion.
     question;
@@ -187,12 +294,11 @@ function showScore(){
     questionImage.style.display = "none"; 
     nextButton.innerHTML = "Jugar otra vez";
     nextButton.style.display = "block";
-    questionImage.src = "";
 }
 
 function handleNextButton(){
     currentQuestionIndex++;
-    if(currentQuestionIndex < questions.length){
+    if(currentQuestionIndex < selectedQuestions.length){
         showQuestion();
     }else{
         showScore();
@@ -200,10 +306,11 @@ function handleNextButton(){
 }
 
 nextButton.addEventListener("click", ()=>{
-    if(currentQuestionIndex < questions.length){
+    if(currentQuestionIndex < selectedQuestions.length){
         handleNextButton();
     }else{
         startQuiz();
     }
 });
+
 startQuiz();
