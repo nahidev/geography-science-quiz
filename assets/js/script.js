@@ -210,6 +210,7 @@ const startButton = document.getElementById("start-button");
 const stopAudioButton = document.getElementById("stop-audio-button");
 const quizContainer = document.querySelector(".quiz");
 
+
 let currentQuestionIndex = 0;
 let score = 0;
 let selectedQuestions = [];
@@ -224,8 +225,10 @@ startButton.addEventListener("click", () => {
 stopAudioButton.addEventListener("click", function() {
     if (backgroundAudio.paused) {
         backgroundAudio.play();
+        stopAudioButton.classList.remove("paused");
     } else {
         backgroundAudio.pause();
+        stopAudioButton.classList.add("paused");
     }
 });
 
@@ -290,7 +293,7 @@ function selectAnswer(e){
 
 function showScore(){
     resetState();
-    questionElement.innerHTML = `Tu puntuación es de ${score} sobre ${questions.length}.`;
+    questionElement.innerHTML = `Tu puntuación es de ${score} sobre ${selectedQuestions.length}.`;
     questionImage.style.display = "none"; 
     nextButton.innerHTML = "Jugar otra vez";
     nextButton.style.display = "block";
