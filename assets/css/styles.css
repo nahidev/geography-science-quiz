@@ -5,6 +5,7 @@
     box-sizing: border-box;
 }
 
+#stop-audio-container {
     position: fixed;
     top: 20px;
     right: 40px;
