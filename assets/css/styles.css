@@ -105,6 +105,30 @@ body{
     cursor: pointer;
 }
 
+#geography-button{
+    background-color: #283593;
+    color: white;
+    font-weight: 500;
+    width: 150px;
+    border: 0;
+    padding: 10px;
+    margin: 20px auto 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#science-button{
+    background-color: #21D173;
+    color: white;
+    font-weight: 500;
+    width: 150px;
+    border: 0;
+    padding: 10px;
+    margin: 20px auto 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 #next-button{
     background-color: #283593;
     color: white;
